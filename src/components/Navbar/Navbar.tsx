@@ -14,20 +14,26 @@ import {
 import { cn } from '@/lib/utils'
 import { FcWorkflow } from 'react-icons/fc'
 
+type listType = {
+  title: string;
+  href: string;
+  description: string
+}
+
 const Navbar = () => {
 
-  const components: { title: string; href: string; description: string }[] = [
+  const components: listType[] = [
     {
-      title: "Alert Dialog",
-      href: "/docs/primitives/alert-dialog",
+      title: "Request to add",
+      href: "/contribute/add",
       description:
-        "A modal dialog that interrupts the user with important content and expects a response.",
+        "Request to add new or a missing startup in the platform",
     },
     {
-      title: "Hover Card",
+      title: "Request to edit",
       href: "/docs/primitives/hover-card",
       description:
-        "For sighted users to preview content available behind a link.",
+        "Request to edit a false or missing information to a startup in the platform",
     },
     {
       title: "Progress",
@@ -56,13 +62,13 @@ const Navbar = () => {
 
   return (
     <nav className="relative bg-white shadow">
-      <div className="container px-6 py-3 mx-auto">
+      <div className="container py-3 mx-auto">
         <div className="flex flex-col md:flex-row md:justify-between md:items-center">
           <div className="flex items-center justify-between">
             <div className="flex items-center">
-              <a href="#">
+              <Link href="/">
                 <img className="w-auto h-6 sm:h-7" src="https://merakiui.com/images/full-logo.svg" alt="" />
-              </a>
+              </Link>
 
               <div className="hidden mx-10 md:block">
                 <div className="relative">
@@ -77,15 +83,6 @@ const Navbar = () => {
               </div>
             </div>
           </div>
-
-          {/* <div className="relative top-0 flex p-0 mt-0 bg-white">
-            <div className="flex items-center gap-3">
-              <a className="my-2 text-sm leading-5 text-gray-700 transition-colors duration-300 transform hover:text-blue-600 hover:underline" href="#">Discover</a>
-              <a className="my-2 text-sm leading-5 text-gray-700 transition-colors duration-300 transform hover:text-blue-600 hover:underline" href="#">Startups</a>
-              <Link href="/contribute" className="my-2 text-sm leading-5 text-gray-700 transition-colors duration-300 transform hover:text-blue-600 hover:underline">Contribute</Link>
-              <button className="p-2 my-2 text-sm leading-5 text-white transition-colors duration-300 transform rounded-md bg-main">Submit</button>
-            </div>
-          </div> */}
 
           <div className='relative'>
             <NavigationMenu>
@@ -129,6 +126,7 @@ const Navbar = () => {
                     <ul className="grid w-[400px] gap-3 p-4 md:w-[500px] md:grid-cols-2 lg:w-[600px] ">
                       {components.map((component) => (
                         <ListItem
+                          className='text-headingText'
                           key={component.title}
                           title={component.title}
                           href={component.href}
@@ -151,19 +149,15 @@ const Navbar = () => {
           </div>
         </div>
       </div>
-    </nav >
+    </nav>
   )
 }
 
-const ListItem = React.forwardRef<
-  React.ElementRef<"a">,
-  React.ComponentPropsWithoutRef<"a">
->(({ className, title, children, ...props }, ref) => {
+const ListItem = (({ className, title, children, ...props }: any) => {
   return (
     <li>
       <NavigationMenuLink asChild>
-        <a
-          ref={ref}
+        <Link
           className={cn(
             "block select-none space-y-1 rounded-md p-3 leading-none no-underline outline-none transition-colors hover:bg-accent hover:text-accent-foreground focus:bg-accent focus:text-accent-foreground",
             className
@@ -174,11 +168,10 @@ const ListItem = React.forwardRef<
           <p className="text-sm leading-snug line-clamp-2 text-muted-foreground">
             {children}
           </p>
-        </a>
+        </Link>
       </NavigationMenuLink>
     </li>
   )
 })
-ListItem.displayName = "ListItem"
 
 export default Navbar
