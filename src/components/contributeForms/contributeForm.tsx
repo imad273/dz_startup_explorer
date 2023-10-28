@@ -30,45 +30,42 @@ const contributeForm = () => {
   }
 
   return (
-    <div className='container flex items-center justify-center min-h-[85vh]'>
-      <div className='w-5/6'>
-        <h2 className='mb-12 text-4xl font-bold text-center text-headingText'>Request To add</h2>
-        <Form {...form}>
-          <form onSubmit={form.handleSubmit(submit)}>
-            <FormField
-              control={form.control}
-              name="name"
-              render={({ field }) => (
-                <div className='pb-3'>
-                  <FormItem>
-                    <FormLabel>Name</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Name" {...field} value={field.value ?? ''} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                </div>
-              )}
-            />
-            <FormField
-              control={form.control}
-              name="location"
-              render={({ field }) => (
-                <div className='pb-3'>
-                  <FormItem>
-                    <FormLabel>Loaction</FormLabel>
-                    <FormControl>
-                      <Input placeholder="Location" {...field} value={field.value ?? ''} />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                </div>
-              )}
-            />
-            <Button type="submit">Submit</Button>
-          </form>
-        </Form>
-      </div>
+    <div className='w-full pt-6'>
+      <Form {...form}>
+        <form onSubmit={form.handleSubmit(submit)}>
+          <FormField
+            control={form.control}
+            name="name"
+            render={({ field }) => (
+              <div className='pb-3'>
+                <FormItem>
+                  <FormLabel>Name</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Name" {...field} value={field.value ?? ''} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              </div>
+            )}
+          />
+          <FormField
+            control={form.control}
+            name="location"
+            render={({ field }) => (
+              <div className='pb-3'>
+                <FormItem>
+                  <FormLabel>Loaction</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Location" {...field} value={field.value ?? ''} />
+                  </FormControl>
+                  <FormMessage />
+                </FormItem>
+              </div>
+            )}
+          />
+          <Button type="submit">Submit</Button>
+        </form>
+      </Form>
     </div>
   )
 }

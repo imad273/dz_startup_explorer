@@ -6,20 +6,23 @@ module.exports = {
     './components/**/*.{ts,tsx}',
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
-	],
+  ],
   theme: {
     container: {
       center: true,
-      padding: "2rem",
-      screens: {
-        "2xl": "1400px",
+      padding: {
+        DEFAULT: '1rem',
+        sm: '1.5rem',
+        md: '1.5rem',
+        lg: '3.5rem',
+        xl: '5rem',
       },
     },
     extend: {
       colors: {
         headingText: "#090f47",
         text: "#1e3a55",
-        main: "#FF0080",
+        main: "#34d399",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",
