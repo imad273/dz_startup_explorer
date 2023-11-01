@@ -6,6 +6,7 @@ import { BsBuildings } from "react-icons/bs"
 import { MdArrowForwardIos } from "react-icons/md"
 import { AiOutlineArrowLeft } from "react-icons/ai"
 import ContributeForm from "@/components/contributeForms/contributeForm"
+import { motion } from "framer-motion"
 
 const page = () => {
   const [stepNumber, setStepNumber] = useState(1)
@@ -21,9 +22,13 @@ const page = () => {
       <div className="w-full">
         <p className="pb-8 font-semibold text-headingText">step <span className="text-main">{stepNumber}</span> of 2</p>
 
-        <div>
+        <div className="overflow-hidden">
           {stepNumber === 1 ?
-            <>
+            <motion.div
+              initial={{ y: "5%" }}
+              animate={{ y: "0%" }}
+              transition={{ duration: 0.2 }}
+            >
               <div>
                 <h2 className="pt-3 text-4xl font-semibold text-headingText">What kind of startup you want to add?</h2>
                 <p className="pt-1 text-sm text-text">When you provide us with who is the contributer, it help us give a better information</p>
@@ -55,10 +60,14 @@ const page = () => {
                   </div>
                 </div>
               </div>
-            </>
+            </motion.div>
             :
             stepNumber === 2 &&
-            <>
+            <motion.div
+              initial={{ opacity: 0, x: "20%" }}
+              animate={{ opacity: 1, x: "00%" }}
+              transition={{ duration: 0.6 }}
+            >
               <div>
                 <button className="flex items-center gap-2" onClick={() => setStepNumber(1)}>
                   <AiOutlineArrowLeft />
@@ -70,7 +79,7 @@ const page = () => {
                 <p className="pt-1 text-sm text-text">Our team will review the information you provide us to insure that it's correct, we will notify you via email when we accept your proposal.</p>
               </div>
               <ContributeForm />
-            </>
+            </motion.div>
           }
         </div>
       </div>

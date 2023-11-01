@@ -8,6 +8,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { Input } from '@/components/ui/input'
 import { Button } from '@/components/ui/button'
 import useContribute from '@/hooks/useContribute';
+import { motion } from 'framer-motion';
 
 const formSchema = z.object({
   name: z.string().min(2).max(50),
@@ -33,36 +34,48 @@ const contributeForm = () => {
     <div className='w-full pt-6'>
       <Form {...form}>
         <form onSubmit={form.handleSubmit(submit)}>
-          <FormField
-            control={form.control}
-            name="name"
-            render={({ field }) => (
-              <div className='pb-3'>
-                <FormItem>
-                  <FormLabel>Name</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Name" {...field} value={field.value ?? ''} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              </div>
-            )}
-          />
-          <FormField
-            control={form.control}
-            name="location"
-            render={({ field }) => (
-              <div className='pb-3'>
-                <FormItem>
-                  <FormLabel>Loaction</FormLabel>
-                  <FormControl>
-                    <Input placeholder="Location" {...field} value={field.value ?? ''} />
-                  </FormControl>
-                  <FormMessage />
-                </FormItem>
-              </div>
-            )}
-          />
+          <motion.div
+            initial={{ opacity: 0, x: "10%" }}
+            animate={{ opacity: 1, x: "00%" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <FormField
+              control={form.control}
+              name="name"
+              render={({ field }) => (
+                <div className='pb-3'>
+                  <FormItem>
+                    <FormLabel>Name</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Name" {...field} value={field.value ?? ''} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              )}
+            />
+          </motion.div>
+          <motion.div
+            initial={{ opacity: 0, x: "10%" }}
+            animate={{ opacity: 1, x: "00%" }}
+            transition={{ duration: 0.6, delay: 0.1 }}
+          >
+            <FormField
+              control={form.control}
+              name="location"
+              render={({ field }) => (
+                <div className='pb-3'>
+                  <FormItem>
+                    <FormLabel>Loaction</FormLabel>
+                    <FormControl>
+                      <Input placeholder="Location" {...field} value={field.value ?? ''} />
+                    </FormControl>
+                    <FormMessage />
+                  </FormItem>
+                </div>
+              )}
+            />
+          </motion.div>
           <Button type="submit">Submit</Button>
         </form>
       </Form>

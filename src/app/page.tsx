@@ -1,14 +1,22 @@
+"use client"
+
 import Image from "next/image"
 import Yassirlogo from "@/assets/yassir-icon-1.png"
 import Sekoirlogo from "@/assets/sekoir-icon-1.png"
 import UbexPaylogo from "@/assets/ubexpay-icon-1.png"
+import { motion } from "framer-motion"
 
 export default function Home() {
   return (
     <main className="bg-gray-100">
       <div className="container">
         <section>
-          <div className="h-[85vh] flex flex-col justify-center">
+          <motion.div
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.2 }}
+            className="h-[85vh] flex flex-col justify-center"
+          >
             <div className="flex items-center justify-center">
               <h1 className="w-4/6 text-5xl font-bold text-center text-headingText">
                 Unlock your financial potential by invest or get funding
@@ -25,12 +33,12 @@ export default function Home() {
             </div>
 
             <div className="flex items-center justify-center mt-5 overflow-hidden">
-              <div className="grid w-2/6 grid-cols-6 p-1.5 rounded-lg bg-pink-100">
+              <div className="grid w-2/6 grid-cols-6 p-1.5 rounded-lg bg-cyan-100">
                 <input type="text" className="col-span-4 ml-2 bg-transparent outline-none placeholder:text-gray-400" placeholder="Search..." />
                 <button className="col-span-2 p-2 font-semibold text-white rounded-lg bg-main">Search</button>
               </div>
             </div>
-          </div>
+          </motion.div>
         </section>
 
         <section className="pb-12">
@@ -86,7 +94,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-      </div>
-    </main>
+      </div >
+    </main >
   )
 }
