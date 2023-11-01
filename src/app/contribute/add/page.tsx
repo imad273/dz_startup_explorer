@@ -22,51 +22,53 @@ const page = () => {
       <div className="w-full">
         <p className="pb-8 font-semibold text-headingText">step <span className="text-main">{stepNumber}</span> of 2</p>
 
-        <div className="overflow-hidden">
+        <div className="overflow-x-hidden">
           {stepNumber === 1 ?
-            <motion.div
-              initial={{ y: "5%" }}
-              animate={{ y: "0%" }}
-              transition={{ duration: 0.2 }}
-            >
-              <div>
-                <h2 className="pt-3 text-4xl font-semibold text-headingText">What kind of startup you want to add?</h2>
-                <p className="pt-1 text-sm text-text">When you provide us with who is the contributer, it help us give a better information</p>
-              </div>
-              <div className="grid gap-3 py-5 md:grid-cols-2">
-                <div onClick={() => nextStep("Mine")} className="flex items-center justify-between gap-3 px-4 py-5 duration-200 border rounded-md cursor-pointer hover:bg-gray-100">
-                  <div className="h-full">
-                    <FiUserCheck size={30} className="text-main" />
-                    <div className="flex flex-col justify-between pt-3">
-                      <h3 className="text-3xl font-semibold text-headingText">My startup</h3>
-                      <p className="pt-3 text-sm text-text">help us provide better data by adding your startup to the platform</p>
+            <div className="overflow-y-hidden">
+              <motion.div
+                initial={{ y: "20%" }}
+                animate={{ y: "0%" }}
+                transition={{ duration: 0.3 }}
+              >
+                <div>
+                  <h2 className="pt-3 text-4xl font-semibold text-headingText">What kind of startup you want to add?</h2>
+                  <p className="pt-1 text-sm text-text">When you provide us with who is the contributer, it help us give a better information.</p>
+                </div>
+                <div className="grid gap-3 py-5 md:grid-cols-2">
+                  <div onClick={() => nextStep("Mine")} className="flex items-center justify-between gap-3 px-4 py-5 duration-200 border rounded-md cursor-pointer hover:bg-gray-100">
+                    <div className="h-full">
+                      <FiUserCheck size={30} className="text-main" />
+                      <div className="flex flex-col justify-between pt-3">
+                        <h3 className="text-3xl font-semibold text-headingText">My startup</h3>
+                        <p className="pt-3 text-sm text-text">help us provide better data by adding your startup to the platform</p>
+                      </div>
+                    </div>
+                    <div>
+                      <MdArrowForwardIos size={23} className="text-gray-400" />
                     </div>
                   </div>
-                  <div>
-                    <MdArrowForwardIos size={23} className="text-gray-400" />
-                  </div>
-                </div>
 
-                <div onClick={() => nextStep("someoneElse")} className="flex items-center justify-between gap-3 px-4 py-5 duration-200 border rounded-md cursor-pointer hover:bg-gray-100">
-                  <div className="h-full">
-                    <BsBuildings size={30} className="text-main" />
-                    <div className="flex flex-col justify-between pt-3">
-                      <h3 className="text-3xl font-semibold text-headingText">Startup of someone</h3>
-                      <p className="pt-3 text-sm text-text">adding the startup you know or you woked with will help the platform to give the best data</p>
+                  <div onClick={() => nextStep("someoneElse")} className="flex items-center justify-between gap-3 px-4 py-5 duration-200 border rounded-md cursor-pointer hover:bg-gray-100">
+                    <div className="h-full">
+                      <BsBuildings size={30} className="text-main" />
+                      <div className="flex flex-col justify-between pt-3">
+                        <h3 className="text-3xl font-semibold text-headingText">Startup of someone</h3>
+                        <p className="pt-3 text-sm text-text">adding the startup you know or you woked with will help the platform to give the best data</p>
+                      </div>
+                    </div>
+                    <div>
+                      <MdArrowForwardIos size={23} className="text-gray-400" />
                     </div>
                   </div>
-                  <div>
-                    <MdArrowForwardIos size={23} className="text-gray-400" />
-                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </div>
             :
             stepNumber === 2 &&
             <motion.div
               initial={{ opacity: 0, x: "20%" }}
               animate={{ opacity: 1, x: "00%" }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.5 }}
             >
               <div>
                 <button className="flex items-center gap-2" onClick={() => setStepNumber(1)}>
