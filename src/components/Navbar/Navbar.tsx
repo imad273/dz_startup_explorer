@@ -31,7 +31,7 @@ const Navbar = () => {
     },
     {
       title: "Request to edit",
-      href: "/docs/primitives/hover-card",
+      href: "/contribute/edit",
       description:
         "Request to edit a false or missing information to a startup in the platform",
     },
